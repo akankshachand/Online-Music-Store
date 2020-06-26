@@ -1,0 +1,36 @@
+<% include partials/header %>
+
+
+<div class="wrap">
+      
+        <br><h1 class="title">Cart Items</h1><br>
+        <div class="content">
+          <div class="products-box">
+          <div class="products">
+            
+            <div class="section group">
+              <% if(cart.length!=0){ cart.forEach(function(song){ %>
+              <div class="grid_1_of_5 images_1_of_5">
+                 <img src="images/<%= song.image %>" style="width:200px; height:200px;">
+                 <h3><%= song.title %></h3>
+                 <p><%= song.album %></p>
+                 <h4>$<%= song.price %></h4>
+                 
+                 
+                 <div class="button"><span><a href="/cart/<%= song._id %>/remove">Remove</a></span></div>
+               </div>
+               <% }); %></div><br><br>
+               <div class="sub-header-bottom">
+                  <button type="Submit" class="btn btn-info"><a class="o" href="/checkout">Proceed to Checkout</a></button>
+                </div>
+               <%} 
+              else { %>
+              <div class="sub-header-center">
+                <h2>Your Cart is Empty</h2>
+              </div>
+              <% } %>
+              
+
+
+
+<% include partials/footer %>

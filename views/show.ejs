@@ -1,0 +1,38 @@
+<% include partials/header %>
+
+
+<div class="container">
+<br><h1 class="title">Music Details</h1><br>
+<h5><img src="/images/<%= song.image %>" style="width:300px; height:300px;"><h5/><br>
+<h5>Title: <%= song.title %><h5><br>
+<h5>Genre: <%= song.genre %><h5><br>
+<h5>Artist: <%= song.artist %><h5><br>
+<h5>Album: <%= song.album %><h5><br>
+<h5>Price: $<%= song.price %><h5><br>
+
+<% if (user && buy=="false") { %>
+
+<button type="button" disabled>Purchased</button><br><br>
+<% } else if (user && cart=="false") { %>
+<button type="button" disabled>Already In Cart</button><br><br>
+ <% } else if(user) { %>
+    <form action="/cart/<%= song._id %>/add">
+     <button type="submit" class="btn btn-info">Add to cart</button><br><br>
+    </form>
+    <% } %>
+
+<% if (user && user.isAdmin) { %>
+<a style="color:white" class="btn btn-warning" href="/music/<%= song._id %>/edit" role="button">Edit Song</a><br><br>
+
+
+<form action="/music/<%= song._id %>?_method=DELETE" method="POST">
+<button type="submit" class="btn btn-danger">Delete Song</button><br><br>
+</form>
+<% } %>
+
+<p>
+<a href="/">Back to List</a>
+</p>
+
+</div>
+

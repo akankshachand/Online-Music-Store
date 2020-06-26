@@ -1,0 +1,80 @@
+<html>
+<head>
+<title> Music Store </title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="/css/style.css" rel="stylesheet" type="text/css"  media="all" />
+<link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/css/responsiveslides.css">
+</head>
+<body>
+	<div class="wrap">
+      <!---start-header--->
+      <div class="header">
+      <!---start-top-header--->
+      <div class="top-header">
+        <div class="top-header-left">
+        <% if (user && user.isAdmin) { %>
+          <ul>
+            <li><img src="/images/admin.png" title="admin" class = "admin" /></li>
+          </ul>
+        <% } %>  
+        </div>
+        <div class="top-header-right">
+         <% if (!user) { %>
+          <ul>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Sign Up</a></li>
+          </ul>
+        <% } %> 
+        <% if (user) { %>
+          <ul>
+            <li><%= user.username %></li>
+            <li><a href="/logout">Logout</a></li>
+          </ul>
+        <% } %>
+        </div>
+        <div class="clear"> </div>
+      </div>
+      <div class="clear"> </div>
+      <div class="sub-header">
+        <div class="logo">
+          <a href="/"><img src="/images/logo.png" title="logo" /></a>
+        </div>
+        <div class="sub-header-center">
+          <form action="/viewAll/1" method="GET" class="form-inline" style="margin-left: 200px">
+            <input type="text" name="search" placeholder="Music Search">
+            <select name="filter" class="form-inline" style="height:40px">
+            <option value="title" selected>Title</option>
+            <option value="artist">Artist</option>
+            <option value="album">Album</option>
+            <option value="genre">Genre</option>
+            </select>
+            <input type="submit" value="search" />
+          </form>
+        </div>
+        <div class="sub-header-right">
+        	<% if(user) {%>
+          <ul>
+            <li><a href="/cart"><img src="/images/cart.png" title="cart" /> CART</a></li>
+          </ul>
+          <% } %>
+        </div>
+        <div class="clear"> </div>
+      </div>
+      <div class="clear"> </div>
+      <div class="top-nav">
+        <ul>
+          <li class="active1"><a href="/">Home</a></li>
+          <% if (user ) {%>
+          <li><a href="/orders">Order History</a></li>
+           <% } %>
+          <% if (user && user.isAdmin) { %>
+            <li style="float:right"><a href="/new">Add new Music</a></li>
+        <% } %>
+          <div class="clear"> </div>
+        </ul>
+      </div>
+      <!---end-top-header--->
+      <!---End-header--->
+      </div>
+      </div>

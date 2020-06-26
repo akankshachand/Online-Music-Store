@@ -1,0 +1,31 @@
+<% include partials/header %>
+
+
+<div class="wrap">
+
+      
+<br><h1 class="title">Your Orders</h1><br>        
+               
+        <div class="content">
+          <div class="products-box">
+          <div class="products">
+
+            <div class="section group">
+              <% if(songs.length!=0){songs.forEach(function(song){ %>
+              <div class="grid_1_of_5 images_1_of_5">
+                 <img src="images/<%= song.image %>" style="width:200px; height:200px;">
+                 <h3><%= song.title %></h3>
+                 <p><%= song.album %></p>
+               </div>
+               <% });} else{ %>
+                  <div class="sub-header-center">
+                <h2>You Have Not Placed Any Orders</h2>
+              </div>
+
+               <% } %>
+               <div class="sub-header-center">
+
+              
+      
+
+<% include partials/footer %>

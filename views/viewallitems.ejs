@@ -1,0 +1,67 @@
+<% include partials/header %>
+
+
+<div class="wrap"> 
+  <br>      <h1 class="title"> Song List</h1><br>  
+  <div class="content">
+    <div class="products-box">
+      <div class="products">
+
+        <div class="section group">
+        <% music.forEach(function(song){ %>
+        <div class="grid_1_of_5 images_1_of_5">
+        <img src="/images/<%= song.image %>" style="width:200px; height:200px;">
+        <h3><%= song.title %></h3>
+        <p><%= song.album %></p>
+        <h4>$<%= song.price %></h4>
+        <div class="button"><span><a href="/music/<%= song._id %>">Read More</a></span></div>
+        </div>
+        <% }); %>
+        <div class="clear"> </div>
+        </div>
+
+        <div class="clear"> </div>
+        </div>
+        </div>
+        <div class="page">
+        <% if (parseInt(music.length)<=0) { %>
+        <p> No results found </p>
+        <% }else{ %>
+
+        <% if (currentPage == 1 && flag == "true") { %> 
+        <a class="page" href="/viewAll/<%= parseInt(currentPage) + 1 %>">
+        <span>
+        Page <%=  parseInt(currentPage) + 1 %> >
+        <i class="icon ion-ios-arrow-forward"></i>
+        </span>
+        </a>            
+        <% } else if (currentPage && flag == "true") { %>
+        <a class="page"
+        href="/viewAll/<%= parseInt(currentPage) - 1 %>"><span>
+        <i class="icon ion-ios-arrow-back"></i>
+        < Page <%= parseInt(currentPage) - 1 %>
+        </span>
+        </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="page"
+        href="/viewAll/<%= parseInt(currentPage) + 1 %>"><span>
+        <i class="icon ion-ios-arrow-back"></i>
+        Page <%= parseInt(currentPage) + 1 %> >
+        </span>
+        </a>
+        <% }else{ %>
+        <a class="page"
+        href="/viewAll/<%= parseInt(currentPage) - 1 %>"><span>
+        <i class="icon ion-ios-arrow-back"></i>
+        < Page <%= parseInt(currentPage) - 1 %>
+        </span>
+        </a>
+        <% } %>
+        <% } %>
+        <br><br>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% include partials/footer %>

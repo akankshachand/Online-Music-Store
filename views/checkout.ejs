@@ -1,0 +1,35 @@
+<% include partials/header %>
+
+<div class="wrap">
+	<br><h1 class="title">Place order</h1><br>
+	<div class="content">
+		<div class="products-box">
+			<div class="products">
+
+				<div class="row"><br><br>
+					
+					<div class="col-sm-9"><br><h3>Song Details</h3></div>
+					<div class="col-sm-3"><br><h3>Price</h3></div>
+				</div>
+				<div class="row"><br><br>
+				
+				<% if(cart.length!=0){ cart.forEach(function(song){ %>
+					
+					<div class="col-sm-9"><br><p>Name: <%= song.title %></p>
+					<p>Album: <%= song.album %></p></div>
+					<div class="col-sm-3"><p><br>$<%= song.price %></p></div>
+					<% }); %></div><br>
+					<div><p class="tp">Total Price: $<%= sum %><br><br></p></div>
+					<div class="sub-header-bottom"><br><button type="Submit" class="btn btn-info"><a class="o" href="/order/all">Place Order</a></button></div>
+				<%}
+				else { %>
+					<div class="sub-header-center">
+						<h2>Your Cart is Empty</h2>
+					</div>
+				<% } %>
+			</div>
+		</div>
+	</div>
+</div>
+              
+<% include partials/footer %>

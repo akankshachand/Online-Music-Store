@@ -1,0 +1,44 @@
+<% include partials/header %>
+
+
+<div class="wrap">
+        <!--start-image-slider---->
+          <div class="image-slider">
+            <!-- Slideshow 1 -->
+              <ul class="rslides" id="slider1">
+                <li><img src="images/slider1.jpg" alt=""></li>
+                <li><img src="images/slider3.jpg" alt=""></li>
+                <li><img src="images/slider1.jpg" alt=""></li>
+              </ul>
+             <!-- Slideshow 2 -->
+          </div>
+          <!--End-image-slider---->
+        <div class="content">
+          <div class="products-box">
+          <div class="products">
+            <h5><span>FEATURED</span> PRODUCTS</h5>
+            <div class="section group">
+              <% music.slice(0,5).forEach(function(song){ %>
+              <div class="grid_1_of_5 images_1_of_5">
+                 <img src="images/<%= song.image %>" style="width:200px; height:200px;">
+                 <h3><%= song.title %></h3>
+                 <p><%= song.album %></p>
+                 <h4>$<%= song.price %></h4>
+                 <div class="button"><span><a href="/music/<%= song._id %>">Read More</a></span></div>
+               </div>
+               <% }); %>
+              
+            <a class="button1" href="/viewAll/1">View all</a>
+            <div class="clear"> </div>
+          </div>
+          
+            <div class="clear"> </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+
+
+<% include partials/footer %>
